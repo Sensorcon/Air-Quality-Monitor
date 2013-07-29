@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/keep_none" android:title="Clear Database"></item><item android:id="@+id/email" android:title="Send CSV File"></item>
+    
+    
+
+</menu>

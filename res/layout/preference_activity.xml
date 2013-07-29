@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_gradient" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature Units"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <RadioGroup
+            android:id="@+id/rgTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fahrenheit" />
+
+            <RadioButton
+                android:id="@+id/radioC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Celcius (default)" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvReportStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pressure Units"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <RadioGroup
+            android:id="@+id/rgPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioPa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pascal (default)" />
+
+            <RadioButton
+                android:id="@+id/radiohPa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hectopascal" />
+
+            <RadioButton
+                android:id="@+id/radiokPa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kilopascal" />
+
+            <RadioButton
+                android:id="@+id/radioAtm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atmosphere" />
+
+            <RadioButton
+                android:id="@+id/radiommHg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmHg" />
+
+            <RadioButton
+                android:id="@+id/radioinHg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="inHg" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvLastMeasured"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Background Monitoring Status"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/tvServiceStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N/A"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Monitoring at Interval"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <RadioGroup
+            android:id="@+id/rgInterval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioIOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Off" />
+
+            <RadioButton
+                android:id="@+id/radioI1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Minute" />
+
+            <RadioButton
+                android:id="@+id/radioI5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Minutes" />
+
+            <RadioButton
+                android:id="@+id/radioI15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 Minutes" />
+
+            <RadioButton
+                android:id="@+id/radioI30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30 Minutes" />
+
+            <RadioButton
+                android:id="@+id/radioI60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 Minutes (default)" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monitoring Sensordrone"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/tvServiceDrone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Paired"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
+
+</ScrollView>

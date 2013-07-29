@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AirQualityMonitor" >
+
+    <TextSwitcher
+        android:id="@+id/tsLastUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+    </TextSwitcher>
+
+    <TextSwitcher
+        android:id="@+id/tsGasData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+         />
+
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/tsLastUpdate"
+        android:gravity="center">
+
+        
+
+    <ImageSwitcher
+        android:id="@+id/isFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:paddingBottom="5dp" />
+<!--         android:layout_above="@+id/tsAQStatus"
+        android:layout_alignParentLeft="true" -->
+        
+                
+       <TextSwitcher
+        android:id="@+id/tsAQStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+      <!--   android:layout_above="@+id/tsLastUpdate"
+        android:layout_alignLeft="@+id/isFace" -->
+               
+    </LinearLayout>
+    
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tsLastUpdate"
+        android:layout_alignParentRight="true" >
+    </TextSwitcher>
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textSwitcher3"
+        android:layout_alignParentRight="true" >
+    </TextSwitcher>
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textSwitcher2"
+        android:layout_alignParentRight="true" >
+    </TextSwitcher>
+
+
+</RelativeLayout>
