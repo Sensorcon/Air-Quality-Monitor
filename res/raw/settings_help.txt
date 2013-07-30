@@ -1,0 +1,35 @@
+Unit Selection:
+---------------
+
+You can select your choice of units for Temperature and Pressure with the radio buttons.
+
+
+Background Monitoring:
+----------------------
+
+The AQM app has a background service that can periodically attempt to connect to the paired Sensordrone, take a reading, and log it. The current on/off status is shown under "Background Monitoring Status".
+
+Selecting an option under "Start Monitoring at Interval" will run the service at the selected interval (or shut the service off), starting immediately upon selection.
+
+This service service has the capability to wake your phone from sleep, take a measurement, and then go back to sleep. If you leave the service running at a short interval  (for example, 1 Minute), then your phone will use more battery power in standy-by.
+
+The background service has three notification that can be displayed while running without needing the AQM app to be open:
+
+1) Status (Started/Stopped): This will let you know that the service has been started or stopped.
+
+2) Low Battery: This will let you know if your Sensordrones battery is getting low and needs to be charged.
+
+3) Air Quality: If the measured air quality is "Bad" or "Moderate", an appropriate notification will appear. If a "Good" measurement is subsequently measured, this notification will clear itself.
+
+
+Monitoring Sensordrone:
+-----------------------
+
+This lists the MAC address of the Sensordrone paired with the app. This is saved by the app, so you only need to select it once, and AQM can cleanly and quickly get data.
+
+Pairing is automatically initiated upon a measurement from the AQM main screen if there is no paired Sensordrone.
+
+To manually pair a Sensordrone, select the "Pair Sensordrone" option from the menu. 
+
+
+

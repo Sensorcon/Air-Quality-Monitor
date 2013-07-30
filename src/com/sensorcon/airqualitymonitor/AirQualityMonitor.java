@@ -335,6 +335,9 @@ public class AirQualityMonitor extends Activity {
 		case R.id.measure:
 			takeMeasurement();
 			break;
+		case R.id.mainHelp:
+			TxtReader help = new TxtReader(myContext);
+			help.displayTxtAlert("About", R.raw.main_help);
 		}
 		
 			

@@ -57,6 +57,11 @@ public class DBDataHandler {
 			myIDs.moveToNext();
 		}
 	}
+	
+	public void clearDatabaseNOW() {
+		database.execSQL("DROP TABLE IF EXISTS " + DBCreator.DATABASE_TABLE);
+	}
+	
 	public ArrayList<DBDataBlob> getAllData() {
 //		// How many data entries do we have?
 //		String sql = "SELECT COUNT(*) FROM " + DBCreator.DATABASE_TABLE;
@@ -84,9 +89,6 @@ public class DBDataHandler {
 		return myBlobs;
 	}
 	
-	public void assignQualityLevel() {
-		
-	}
 	
 	public File makeCSV() throws IOException {
 		File csv = null;

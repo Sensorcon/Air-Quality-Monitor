@@ -1,0 +1,35 @@
+Air Quality Monitor (AQM) allows you to pair a Sensordrone and measure the air quality based on the amount of Carbon Monoxide (CO) and Carbon Dioxide (CO2), if you have purchased the CO2 external module. 
+
+At any time, you can tap the face in the lower left portion of your screen to request a measurement. 
+
+AQM also provides a service that can run at a specified interval automatically to log your air quality in the background (for more information please see the help menu in the "Settings" page).
+
+The Main Screen:
+----------------
+
+AQM logs all readings to a local database, and the last reading is displayed on the main page.
+
+At the bottom-center of the main screen, you can find the time stamp of when the last reading was measured.
+
+In the top-center of the screen, the last measured CO (and CO2) reading in parts per million (ppm) is displayed; note that a Good/Moderate/Bad air quality is denoted by a Green/Yellow/Red glow around the reading. A matching face appears in the lower left corner of the screen, also indicating the air quality level. Tapping this face will request a new measurement; the face will turn grey, and once the reading is performed, the new data and air quality will be updated on the display.
+
+In the lower-right corner, the measured Temperature, Humidity, and Pressure are displayed. Unit choice can be selected in the "Settings" page.
+
+The Main Screen Menu:
+---------------------
+
+"Logged History" 
+The Logged History page allows you to view all of the logged history currently stored in the database. More information can be found in its own "Help" menu.
+
+"Settings"
+The Settings page allows you to select your preferred units for viewing in the AQM app. You can also pair which Sensordrone you want to use the app with, and start/stop the AQM background monitoring service. More information can be found in its own "Help" menu.
+
+"Refresh Data"
+Refresh Data updates the display with the latest stored measurement. Note that manually taking a measurement will update the display automatically. This option is mainly useful if you are using the background monitoring service, and a reading has occurred since you have opened the app.
+
+"Take a Measurement"
+Take a Measurement will attempt to connect to the paired Sensordrone, take a measurement, and update the display. The same action is performed by tapping the face in the lower-left corner of the screen. 
+When taking a measurement, the face will turn grey; during successful measurement, the face will animate, and return with an air quality reading. If for some reason the measurement was not successful (such as the Sensordrone being out of range), a message will be displayed indicating that a new reading wasn't taken, and the last stored measurement will be re-displayed.
+
+"Help"
+Help will display the help file, but you knew that already ;-)

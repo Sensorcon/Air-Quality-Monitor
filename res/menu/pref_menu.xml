@@ -3,5 +3,9 @@
 <!--     <item android:id="@+id/srvStart" android:title="Start Monitoring Service"></item>
     <item android:id="@+id/srvStop" android:title="Stop Monitoring Service"></item> -->
     <item android:id="@+id/stupDrn" android:title="Pair Sensordrone"></item>
+    <item
+        android:id="@+id/prefHelp"
+        android:title="Help">
+    </item>
     
 </menu>

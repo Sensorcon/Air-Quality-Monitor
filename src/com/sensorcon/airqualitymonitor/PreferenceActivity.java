@@ -374,6 +374,10 @@ public class PreferenceActivity extends Activity{
 		case R.id.stupDrn:
 			setupDrone(false);
 			break;
+		case R.id.prefHelp:
+			TxtReader help = new TxtReader(myContext);
+			help.displayTxtAlert("Settings", R.raw.settings_help);
+			break;
 		}
 		return true;
 	}
