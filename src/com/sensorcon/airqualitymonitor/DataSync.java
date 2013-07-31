@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.sensorcon.airqualitymonitor.database.DBCO;
 import com.sensorcon.airqualitymonitor.database.DBCO2;
@@ -307,6 +308,9 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					lock.wait(10000);
 				}
 			} catch (InterruptedException e) {
+				if (context != null) {
+					Toast.makeText(context, "Measurement timed out!", Toast.LENGTH_SHORT).show();
+				}
 				return null;
 			}
 		} 

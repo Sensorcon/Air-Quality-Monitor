@@ -154,9 +154,6 @@ public class HistoryActivity extends Activity {
 			sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
 			sendIntent.setType("text/html");
 			startActivity(sendIntent);
-
-			//			csv.delete();
-
 			break;
 
 		case R.id.keep_none:
@@ -185,6 +182,10 @@ public class HistoryActivity extends Activity {
 			alert.show();
 			break;
 
+		case R.id.historyHelp:
+			TxtReader help = new TxtReader(myContext);
+			help.displayTxtAlert("History", R.raw.history_help);
+			break;
 		}
 
 		return true;

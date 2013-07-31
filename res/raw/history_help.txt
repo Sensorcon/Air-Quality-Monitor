@@ -1,0 +1,21 @@
+Logged History:
+---------------
+
+Here you can view all of the logged measurements the AQM app has made, labeled by their time stamp. Measurements are sorted from oldest to newest, and color coded based on their air quality rating.
+
+Selecting an item will bring up an "Air Quality Report", which has all of the stored information. Carbon Monoxide and Carbon Dioxide values are rated separately, to indicate which is responsible for air quality rating displayed.
+
+Clear Database:
+---------------
+
+The "Clear Database" menu option will delete all of the measurements recorded in the database. This is permanent!
+
+
+Send CSV File:
+--------------
+
+The "Send CSV File" menu option will generate a comma separated value file from all of measurements in the database.
+
+You will be able to send the file via any Android app that handles an ACTION_SEND Intent (some examples are Email, Gmail, Google Drive, and sending wirelessly via Bluetooth)
+
+Please note that the units are static, and listed in the header of the CSV file (units selected in the "Settings" are not applied here)!

@@ -55,7 +55,7 @@ public class DBDataHandler {
 	public void loadDummyData() {
 		DBDateTime dataTime = new DBDateTime(-1, "20130102_012345");
 		DBCO coData = new DBCO(-1, 0);
-		DBCO2 co2Data = new DBCO2(-1, 420);
+		DBCO2 co2Data = new DBCO2(-1, 450);
 		DBTemperature tempData = new DBTemperature(-1, 25);
 		DBHumidity humidityData = new DBHumidity(-1, 50);
 		DBPressure pressureData = new DBPressure(-1, 90000);
@@ -66,7 +66,6 @@ public class DBDataHandler {
 		dataValues.put(DBCreator.COLUMN_TEMPERATURE, tempData.getValue());
 		dataValues.put(DBCreator.COLUMN_HUMIDITY, humidityData.getValue());
 		dataValues.put(DBCreator.COLUMN_PRESSURE, pressureData.getValue());
-		
 		database.insert(DBCreator.DATABASE_TABLE, null, dataValues);
 		
 	}
@@ -92,11 +91,6 @@ public class DBDataHandler {
 	}
 	
 	public ArrayList<DBDataBlob> getAllData() {
-//		// How many data entries do we have?
-//		String sql = "SELECT COUNT(*) FROM " + DBCreator.DATABASE_TABLE;
-//	    SQLiteStatement statement = database.compileStatement(sql);
-//	    long nRows = statement.simpleQueryForLong();
-//		DBDataBlob[] myBlobs = new DBDataBlob[(int) nRows];
 		ArrayList<DBDataBlob> myBlobs = new ArrayList<DBDataBlob>();
 		
 		// Get all of our Data

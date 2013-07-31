@@ -27,8 +27,8 @@ public class Constants {
 	final static int MINUTES_30 = 30;
 	final static int MINUTES_60 = 60;
 	
-	public final static int CO_GOOD = 35;
-	public final static int CO_MODERATE = 200;
+	public final static int CO_GOOD = 5;
+	public final static int CO_MODERATE = 10;
 	
 	public final static int CO2_GOOD = 1000;
 	public final static int CO2_MODERATE = 1500;
