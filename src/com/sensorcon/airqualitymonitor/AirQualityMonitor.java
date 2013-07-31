@@ -7,6 +7,7 @@ import com.sensorcon.airqualitymonitor.database.DBDataHandler;
 
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -191,6 +192,7 @@ public class AirQualityMonitor extends Activity {
 		dbHandler = new DBDataHandler(getApplicationContext());
 
 
+
 	}
 
 	public void updateDisplay() {
@@ -338,6 +340,13 @@ public class AirQualityMonitor extends Activity {
 		case R.id.mainHelp:
 			TxtReader help = new TxtReader(myContext);
 			help.displayTxtAlert("About", R.raw.main_help);
+			// Load in a buuuunch of data
+			dbHandler.open();
+			for (int i=0; i < 100; i++) {
+				dbHandler.loadDummyData();
+				Log.d("AQM", "Loading dummy " + String.valueOf(i));
+			}
+			dbHandler.close();
 		}
 		
 			
@@ -374,4 +383,5 @@ public class AirQualityMonitor extends Activity {
 		faceAnimateToggle = !faceAnimateToggle;
 	}
 
+	
 }

@@ -27,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.net.Uri;
 
 public class HistoryActivity extends Activity {
@@ -167,10 +168,9 @@ public class HistoryActivity extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					dbHandler.open();
-					dbHandler.clearDatabase();
-					dbHandler.close();
-					HistoryActivity.this.onCreate(null);
+//					dbHandler.open();
+					dbHandler.clearDatabaseProgress(myContext, HistoryActivity.this);
+//					dbHandler.close();
 				}
 			});
 			builder.setNegativeButton("Cancel", new OnClickListener() {
@@ -191,6 +191,9 @@ public class HistoryActivity extends Activity {
 	}
 
 
+	public void restart() {
+		HistoryActivity.this.onCreate(null);
+	}
 
 }
 
