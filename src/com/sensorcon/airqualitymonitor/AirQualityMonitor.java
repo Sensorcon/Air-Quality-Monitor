@@ -339,18 +339,47 @@ public class AirQualityMonitor extends Activity {
 			TxtReader help = new TxtReader(myContext);
 			help.displayTxtAlert("About", R.raw.main_help);
 			// Load in some data
-			dbHandler.open();
-			for (int i=0; i < 100; i++) {
-				dbHandler.loadDummyData();
-				Log.d("AQM", "Loading dummy " + String.valueOf(i));
-			}
-			dbHandler.close();
+//			dbHandler.open();
+//			for (int i=0; i < 100; i++) {
+//				dbHandler.loadDummyData();
+//				Log.d("AQM", "Loading dummy " + String.valueOf(i));
+//			}
+//			dbHandler.close();
+			break;
+		case R.id.aqInfo:
+			showAQInfo();
+			break;
 		}
 		
 			
 		return true;
 	}
 
+	public void showAQInfo() {
+		AlertDialog alert;
+		AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
+		builder.setTitle("Air Quality Information");
+		builder.setMessage("Which gas would like you like to know more information about?");
+		builder.setPositiveButton("Carbon Monoxide", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent coIntent = new Intent(myContext, COInfo.class);
+				startActivity(coIntent);
+			}
+		});
+		builder.setNegativeButton("Carbon Dioxide", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent co2Intent = new Intent(myContext, CO2Info.class);
+				startActivity(co2Intent);
+			}
+		});
+		alert = builder.create();
+		alert.show();
+	}
+	
 	public void takeMeasurement() {
 		String MAC = myPreferences.getString(Constants.SD_MAC, "");
 		if (MAC.equals("")) {

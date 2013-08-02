@@ -17,6 +17,10 @@
         android:title="Take a Measurement">
     </item>
     <item
+        android:id="@+id/aqInfo"
+        android:title="Air Quality Info">
+    </item>
+    <item
         android:id="@+id/mainHelp"
         android:title="Help">
     </item>

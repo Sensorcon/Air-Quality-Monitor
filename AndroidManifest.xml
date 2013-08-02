@@ -50,6 +50,14 @@
             android:name="com.sensorcon.airqualitymonitor.ReportActivity"
             android:configChanges="orientation|screenSize" >
         </activity>
+        <activity
+            android:name="com.sensorcon.airqualitymonitor.COInfo"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.sensorcon.airqualitymonitor.CO2Info"
+            android:configChanges="orientation|screenSize" >
+        </activity>
     </application>
 
 </manifest>
