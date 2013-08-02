@@ -64,10 +64,10 @@ public class CO2Info extends Activity{
 		addTextRow("PPM Reading:", Typeface.BOLD_ITALIC);
 		addTextRow("1000 - 1500", Typeface.NORMAL);
 		addTextRow("Possible Meaning:", Typeface.BOLD_ITALIC);
-		addTextRow("Values over 1000 could be a sign of poor building ventiliation. Sensitivie people may notice headaches and/or general fatigue",
+		addTextRow("Values over 1000 could be a sign of poor building ventiliation. Sensitivie people may notice headaches and/or general fatigue.",
 					Typeface.NORMAL);
 		addTextRow("What you should do:", Typeface.BOLD_ITALIC);
-		addTextRow("¥ ",
+		addTextRow("¥ Check the outdoor CO2 level, as this will afect the indoor level as well. Typcially, the indoor level should not more than 600 ppm above the outdoor level",
 				Typeface.NORMAL);
 
 		// Bad
@@ -76,9 +76,9 @@ public class CO2Info extends Activity{
 		addTextRow("PPM Reading:", Typeface.BOLD_ITALIC);
 		addTextRow("Greater than 1500", Typeface.NORMAL);
 		addTextRow("Possible Meaning:", Typeface.BOLD_ITALIC);
-		addTextRow("You are in a location with very poor ventilation", Typeface.NORMAL);
+		addTextRow("You are in a location with poor ventilation.", Typeface.NORMAL);
 		addTextRow("What you should do:", Typeface.BOLD_ITALIC);
-		addTextRow("¥ If possible, go outside into the fresh air.", Typeface.NORMAL);
+		addTextRow("¥ Try to improve the ventilation if possible, such as opening a window, or manually turning on any air exchanges.", Typeface.NORMAL);
 
 		
 		
