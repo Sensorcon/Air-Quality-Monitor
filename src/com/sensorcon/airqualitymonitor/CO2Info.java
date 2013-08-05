@@ -1,12 +1,16 @@
 package com.sensorcon.airqualitymonitor;
 
+import java.util.regex.Pattern;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.location.Address;
 import android.os.Bundle;
 import android.renderscript.Type;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.text.util.Linkify;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -41,7 +45,7 @@ public class CO2Info extends Activity{
 		table = (TableLayout)findViewById(R.id.tlInfo);
 		
 
-		String test = "Typical outdoor ambient (fresh air) CO2 levels are around 300-400 ppm, depending on location";
+		String test = "Typical outdoor ambient (fresh air) CO2 levels are around 350-450 ppm, depending on location";
 		addTextRow(test, Typeface.ITALIC);
 		
 		// Good
@@ -72,6 +76,7 @@ public class CO2Info extends Activity{
 
 		// Bad
 		addImageRow(R.drawable.face_bad);
+		addTextRow("Air Quality Rating:", Typeface.BOLD_ITALIC);
 		addTextRow("Bad", Typeface.NORMAL);
 		addTextRow("PPM Reading:", Typeface.BOLD_ITALIC);
 		addTextRow("Greater than 1500", Typeface.NORMAL);
@@ -80,6 +85,11 @@ public class CO2Info extends Activity{
 		addTextRow("What you should do:", Typeface.BOLD_ITALIC);
 		addTextRow("¥ Try to improve the ventilation if possible, such as opening a window, or manually turning on any air exchanges.", Typeface.NORMAL);
 
+		// More information
+		addImageRow(R.drawable.face_unknown);
+		addTextRow("More Information:", Typeface.BOLD_ITALIC);
+		addLinkRow("https://en.wikipedia.org/wiki/Carbon_dioxide_in_Earth's_atmosphere", Typeface.NORMAL);
+		addLinkRow("https://en.wikipedia.org/wiki/Indoor_air_quality#Carbon_dioxide", Typeface.NORMAL);
 		
 		
 
@@ -97,6 +107,23 @@ public class CO2Info extends Activity{
 		SpannableString fancyString = new SpannableString(msg);
 		fancyString.setSpan(new StyleSpan(typefaceStyle), 0, fancyString.length(), 0);
 		generalText.setText(fancyString);
+		generalRow.addView(generalText);
+		table.addView(generalRow);
+	}
+	
+	public void addLinkRow(String link, int typefaceStyle) {
+		TableRow generalRow = new TableRow(myContext);
+		generalRow.setPadding(0, 5, 0, 0);
+		TextView generalText = new TextView(myContext);
+		generalText.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		SpannableString fancyString = new SpannableString(link);
+		fancyString.setSpan(new StyleSpan(typefaceStyle), 0, fancyString.length(), 0);
+		generalText.setText(fancyString);
+		
+		Pattern pattern = Pattern.compile(link);
+		Linkify.addLinks(generalText, pattern, "");
+		
+		
 		generalRow.addView(generalText);
 		table.addView(generalRow);
 	}

@@ -64,7 +64,7 @@ public class DroneAlarm extends BroadcastReceiver{
 		AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(context, DroneAlarm.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
-		int minutes = myPreferences.getInt(Constants.TIME_INTERVAL, 60) *  1000;
+		int minutes = myPreferences.getInt(Constants.TIME_INTERVAL, 60) *  1000 * 60;
         am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), minutes, pi); // Millisec * Second * Minute		
 	}
 	
