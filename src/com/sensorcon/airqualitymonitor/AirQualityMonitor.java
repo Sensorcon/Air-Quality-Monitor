@@ -73,7 +73,15 @@ public class AirQualityMonitor extends Activity {
 	Activity myActivity;
 	Context myContext;
 	
+	ImageView ivInfo;
+	
 	boolean faceAnimateToggle = true;
+	boolean isMeasuring = false;
+	
+	public void setIsMeasuring(boolean status) {
+		this.isMeasuring = status;
+	}
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +109,12 @@ public class AirQualityMonitor extends Activity {
 					
 					@Override
 					public void onClick(View v) {
-						takeMeasurement();
+						// Don't allow multiple measurements at once
+						// here only. Too easy for people to click the face
+						// too man times.
+						if (!isMeasuring) {
+							takeMeasurement();
+						}
 					}
 				});
 				return fView;
@@ -189,6 +202,14 @@ public class AirQualityMonitor extends Activity {
 		
 		dbHandler = new DBDataHandler(getApplicationContext());
 
+		ivInfo = (ImageView)findViewById(R.id.ivInfo);
+		ivInfo.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showAQInfo();
+			}
+		});
 
 
 	}
@@ -381,6 +402,7 @@ public class AirQualityMonitor extends Activity {
 	}
 	
 	public void takeMeasurement() {
+		isMeasuring = true;
 		String MAC = myPreferences.getString(Constants.SD_MAC, "");
 		if (MAC.equals("")) {
 			// Launch settings activity
@@ -392,6 +414,7 @@ public class AirQualityMonitor extends Activity {
 		faceSwitcher.setImageResource(R.drawable.face_unknown);
 		DataSync getData = new DataSync(getApplicationContext(), AirQualityMonitor.this);
 		getData.setSdMC(MAC);
+		getData.setContext(myContext);
 		getData.execute();
 	}
 	

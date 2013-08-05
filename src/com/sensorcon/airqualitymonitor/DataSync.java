@@ -41,6 +41,8 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 	NotificationCompat.Builder notiftyAirQualityBad;
 
 
+	boolean measurementTimeout = false;
+	boolean connectFailed = false;
 
 	public void setContext(Context context) {
 		this.context = context;
@@ -308,12 +310,13 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					lock.wait(10000);
 				}
 			} catch (InterruptedException e) {
-				if (context != null) {
-					Toast.makeText(context, "Measurement timed out!", Toast.LENGTH_SHORT).show();
-				}
+				measurementTimeout = true;
 				return null;
 			}
-		} 
+		} else {
+			// We didn't even connect!
+			connectFailed = true;
+		}
 
 
 		return null;
@@ -330,6 +333,14 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 	protected void onPostExecute(Void result) {
 		if (runningApp != null) {
 			runningApp.updateDisplay();
+			
+			if (connectFailed) {
+				Toast.makeText(runningApp.getApplicationContext(), "Connection not successful!\n\nIs your Sensordrone in range and charged up?", Toast.LENGTH_LONG).show();
+			} else if (measurementTimeout) {
+				Toast.makeText(runningApp.getApplicationContext(), "Measurement timed out!\n\nPerhaps your Sensordrone battery is low or you moved out of range.", Toast.LENGTH_LONG).show();
+			}
+			
+			runningApp.setIsMeasuring(false);
 		}
 	}
 
