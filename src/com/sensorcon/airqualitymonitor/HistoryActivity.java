@@ -150,7 +150,7 @@ public class HistoryActivity extends Activity {
 
 			Uri fileUri = Uri.fromFile(csv);
 			Intent sendIntent = new Intent(Intent.ACTION_SEND);
-			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Sensordrone AQIA Data");
+			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Sensordrone AQM Data");
 			sendIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
 			sendIntent.setType("text/html");
 			startActivity(sendIntent);

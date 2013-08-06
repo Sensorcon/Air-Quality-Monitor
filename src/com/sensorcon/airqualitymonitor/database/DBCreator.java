@@ -8,10 +8,10 @@ import android.util.Log;
 public class DBCreator extends SQLiteOpenHelper {
 
 	// Database stuff
-	private static final String DATABASE_NAME = "aqia.db";
+	private static final String DATABASE_NAME = "aqm.db";
 	private static final int DATABASE_VERSION = 1;
 
-	public static final String DATABASE_TABLE = "aqia_data";
+	public static final String DATABASE_TABLE = "aqm_data";
 	public static final String COLUNM_ID = "_id";
 	public static final String COLUMN_DATETIME = "date_time";
 	public static final String COLUMN_CO = "co_data";

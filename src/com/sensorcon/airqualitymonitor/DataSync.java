@@ -102,10 +102,8 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					dateTime = new DBDateTime();
 					dateTime.setValue(currentDateandTime);
 
-					Log.d("AQIA_SERVICE", dateTime.toString());
-
 					myDrone.uartWrite("K 1\r\n".getBytes());
-					myDrone.setLEDs(255, 0, 0);
+					myDrone.setLEDs(0, 0, 126);
 					myDrone.measureBatteryVoltage();
 				}
 
@@ -132,8 +130,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					tempData = new DBTemperature();
 					tempData.setValue((long) myDrone.temperature_Celcius);
 
-					Log.d("AQIA_SERVICE", tempData.toString());
-
 					myDrone.enableHumidity();
 				}
 
@@ -148,7 +144,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					humidityData = new DBHumidity();
 					humidityData.setValue((long) myDrone.humidity_Percent);
 
-					Log.d("AQIA_SERVICE", humidityData.toString());
 
 					myDrone.enablePressure();
 				}
@@ -172,7 +167,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					presureData = new DBPressure();
 					presureData.setValue((long) myDrone.pressure_Pascals);
 
-					Log.d("AQIA_SERVICE", presureData.toString());
 
 					myDrone.disablePressure();
 
@@ -201,7 +195,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					coData = new DBCO();
 					coData.setValue((long) myDrone.precisionGas_ppmCarbonMonoxide);
 
-					Log.d("AQIA_SERVICE", coData.toString());
 
 					myDrone.uartWrite("Z\r\n".getBytes());
 					myDrone.uartRead();
@@ -236,7 +229,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 						for (int i=0; i < avail; i++) {
 
 							if ((byte)myDrone.uartInputStream.read() == 0x5a && i < avail-7 && needData) {
-								Log.d("AQM", "Got it!");
 								myDrone.uartInputStream.read();
 								byte[] value = new byte[5];
 								myDrone.uartInputStream.read(value);
@@ -252,12 +244,10 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 
 
 
-					Log.d("AQIA_SERVICE", result);
 					myDrone.uartWrite("K 0\r\n".getBytes());
 					myDrone.setLEDs(0, 0, 0);
 					myDrone.disconnect();
 
-					Log.d("AQI_SERVICE", "Logging to database");
 					co2Data = new DBCO2();
 					long value = Long.parseLong(result);
 					co2Data.setValue(value);
@@ -266,7 +256,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					myDBHandler.open();
 					long id = myDBHandler.addData(dateTime, coData, co2Data, tempData, humidityData, presureData);
 					myDBHandler.close();
-					Log.d("AQIA_SERVICE", String.valueOf(id));
 
 					// Make a blob to get a quality assessment
 					DBDataBlob statusBlob = new DBDataBlob(dateTime, coData, co2Data, humidityData, tempData, presureData);
@@ -344,6 +333,13 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 		}
 	}
 
+	@Override
+	protected void onPreExecute() {
+		if (runningApp != null) {
+			runningApp.setIsMeasuring(true);
+		}
+	}
+	
 	@Override
 	protected void onProgressUpdate(Void... values) {
 		if (runningApp != null) {

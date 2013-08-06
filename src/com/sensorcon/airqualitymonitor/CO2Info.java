@@ -68,10 +68,10 @@ public class CO2Info extends Activity{
 		addTextRow("PPM Reading:", Typeface.BOLD_ITALIC);
 		addTextRow("1000 - 1500", Typeface.NORMAL);
 		addTextRow("Possible Meaning:", Typeface.BOLD_ITALIC);
-		addTextRow("Values over 1000 could be a sign of poor building ventiliation. Sensitivie people may notice headaches and/or general fatigue.",
+		addTextRow("Values over 1000 could be a sign of poor building ventiliation. Sensitive people may notice headaches and/or general fatigue.",
 					Typeface.NORMAL);
 		addTextRow("What you should do:", Typeface.BOLD_ITALIC);
-		addTextRow("¥ Check the outdoor CO2 level, as this will afect the indoor level as well. Typcially, the indoor level should not more than 600 ppm above the outdoor level",
+		addTextRow("¥ Check the outdoor CO2 level, as this will affect the indoor level as well. Typcially, the indoor level should not more than 600 ppm above the outdoor level",
 				Typeface.NORMAL);
 
 		// Bad

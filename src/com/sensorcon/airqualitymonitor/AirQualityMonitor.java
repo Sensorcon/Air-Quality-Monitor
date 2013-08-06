@@ -75,8 +75,8 @@ public class AirQualityMonitor extends Activity {
 	
 	ImageView ivInfo;
 	
-	boolean faceAnimateToggle = true;
-	boolean isMeasuring = false;
+	boolean faceAnimateToggle;
+	boolean isMeasuring;
 	
 	public void setIsMeasuring(boolean status) {
 		this.isMeasuring = status;
@@ -97,7 +97,6 @@ public class AirQualityMonitor extends Activity {
 		myPreferences = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		prefEditor = myPreferences.edit();
-
 
 		faceFactory = new ViewFactory() {
 			
