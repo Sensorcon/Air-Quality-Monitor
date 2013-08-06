@@ -79,6 +79,7 @@ public class AirQualityMonitor extends Activity {
 	boolean isMeasuring;
 	
 	public void setIsMeasuring(boolean status) {
+		Log.d("AQM TF", String.valueOf(status) + "SET");
 		this.isMeasuring = status;
 	}
 	
@@ -93,7 +94,7 @@ public class AirQualityMonitor extends Activity {
 
 		myActivity = this;
 		myContext = this;
-		
+				
 		myPreferences = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		prefEditor = myPreferences.edit();
@@ -111,6 +112,7 @@ public class AirQualityMonitor extends Activity {
 						// Don't allow multiple measurements at once
 						// here only. Too easy for people to click the face
 						// too man times.
+						Log.d("AQM TF", String.valueOf(isMeasuring));
 						if (!isMeasuring) {
 							takeMeasurement();
 						}
@@ -245,7 +247,6 @@ public class AirQualityMonitor extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					takeMeasurement();
 				}
 			});
@@ -401,7 +402,6 @@ public class AirQualityMonitor extends Activity {
 	}
 	
 	public void takeMeasurement() {
-		isMeasuring = true;
 		String MAC = myPreferences.getString(Constants.SD_MAC, "");
 		if (MAC.equals("")) {
 			// Launch settings activity

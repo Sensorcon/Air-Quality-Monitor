@@ -41,8 +41,8 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 	NotificationCompat.Builder notiftyAirQualityBad;
 
 
-	boolean measurementTimeout = false;
-	boolean connectFailed = false;
+	boolean measurementTimeout;
+	boolean connectFailed;
 
 	public void setContext(Context context) {
 		this.context = context;
@@ -283,6 +283,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 
 
 					synchronized (lock) {
+						measurementTimeout = false;
 						lock.notify();
 					}
 				}
@@ -295,11 +296,12 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 		if (myDrone.btConnect(sdMC)) {
 			try {
 				synchronized (lock) {
+					measurementTimeout = true;
 					// We'll give it 10 seconds
+					// reset measurementTimeout at notify() statement 
 					lock.wait(10000);
 				}
 			} catch (InterruptedException e) {
-				measurementTimeout = true;
 				return null;
 			}
 		} else {
@@ -329,12 +331,16 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 				Toast.makeText(runningApp.getApplicationContext(), "Measurement timed out!\n\nPerhaps your Sensordrone battery is low or you moved out of range.", Toast.LENGTH_LONG).show();
 			}
 			
+			Log.d("AQM TF", String.valueOf(connectFailed) + "CNCT");
+			Log.d("AQM TF", String.valueOf(measurementTimeout) + "TMOUT");
 			runningApp.setIsMeasuring(false);
 		}
 	}
 
 	@Override
 	protected void onPreExecute() {
+		connectFailed = false;
+		measurementTimeout = false;
 		if (runningApp != null) {
 			runningApp.setIsMeasuring(true);
 		}
