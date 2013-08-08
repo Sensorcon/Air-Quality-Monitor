@@ -10,12 +10,14 @@ import com.sensorcon.airqualitymonitor.database.DBTemperature;
 import com.sensorcon.sensordrone.android.Drone;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 
 public class DroneAQMService extends Service {
@@ -68,6 +70,13 @@ public class DroneAQMService extends Service {
 		// Set up our notifications
 		notifier = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
+		// If we don't want to do anything, then we need an empty Intent for some versions of Android
+		 PendingIntent emptyIntent = PendingIntent.getActivity(
+			      this, 
+			      0, 
+			      new Intent(),  //Dummy Intent do nothing 
+			      Intent.FLAG_ACTIVITY_NEW_TASK);
+		 
 		// If the MAC isn't there, abort the service
 		this.setSdMC(myPreferences.getString(Constants.SD_MAC, ""));
 		if (sdMC == "") {
@@ -75,6 +84,7 @@ public class DroneAQMService extends Service {
 			notifyNotSetUp.setContentTitle("AQM Service Not Started");
 			notifyNotSetUp.setContentInfo("Sensordrone not set up");
 			notifyNotSetUp.setSmallIcon(R.drawable.ic_launcher);
+			notifyNotSetUp.setContentIntent(emptyIntent);
 			notifier.notify(Constants.NOTIFY_SERVICE_STATUS, notifyNotSetUp.build());
 			this.stopSelf();
 		}
@@ -84,11 +94,13 @@ public class DroneAQMService extends Service {
 		// Service Start
 		notifyConnect = new android.support.v4.app.NotificationCompat.Builder(this);
 		notifyConnect.setContentTitle("AQM Service Started");
+		notifyConnect.setContentIntent(emptyIntent);
 		notifyConnect.setSmallIcon(R.drawable.ic_launcher);
 
 		// Service Stop
 		notifyDisconnect = new android.support.v4.app.NotificationCompat.Builder(this);
 		notifyDisconnect.setContentTitle("AQM Service Stopped");
+		notifyDisconnect.setContentIntent(emptyIntent);
 		notifyDisconnect.setSmallIcon(R.drawable.ic_launcher);
 
 

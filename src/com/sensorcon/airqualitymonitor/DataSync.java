@@ -5,10 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
@@ -40,6 +43,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 	NotificationCompat.Builder notiftyAirQualityModerate;
 	NotificationCompat.Builder notiftyAirQualityBad;
 
+	
 
 	boolean measurementTimeout;
 	boolean connectFailed;
@@ -83,10 +87,11 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 			return null;
 		}
 
+		Looper.prepare(); // This needs to be called for older devices
 		myDrone = new Drone();
 
 		notifier = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-
+				 
 		DroneEventHandler myHandler = new DroneEventHandler() {
 
 			@Override
@@ -114,6 +119,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 						notifyLowBattery.setContentTitle("Low Battery!");
 						notifyLowBattery.setContentText("Your Sensordrones battery is getting low! Please charge it up.");
 						notifyLowBattery.setSmallIcon(R.drawable.ic_launcher);
+						notifyLowBattery.setContentIntent(emptyIntent());
 						notifier.notify(Constants.NOTIFY_LOW_BATTERY, notifyLowBattery.build());
 					}
 					myDrone.enableTemperature();
@@ -270,6 +276,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 							notiftyAirQualityModerate.setContentTitle("Air Quality Alert!");
 							notiftyAirQualityModerate.setContentText("Your air quality is Moderate!");
 							notiftyAirQualityModerate.setSmallIcon(R.drawable.ic_launcher);
+							notiftyAirQualityModerate.setContentIntent(emptyIntent());
 							notifier.notify(Constants.NOTIFY_AQ_STATUS, notiftyAirQualityModerate.build());
 
 						} else if (statusBlob.getStatus() == Constants.STATUS_BAD) {
@@ -277,6 +284,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 							notiftyAirQualityBad.setContentTitle("Air Quality Alert!");
 							notiftyAirQualityBad.setContentText("Your air quality is Bad!");
 							notiftyAirQualityBad.setSmallIcon(R.drawable.ic_launcher);
+							notiftyAirQualityBad.setContentIntent(emptyIntent());
 							notifier.notify(Constants.NOTIFY_AQ_STATUS, notiftyAirQualityBad.build());
 						}
 					}
@@ -331,8 +339,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 				Toast.makeText(runningApp.getApplicationContext(), "Measurement timed out!\n\nPerhaps your Sensordrone battery is low or you moved out of range.", Toast.LENGTH_LONG).show();
 			}
 			
-			Log.d("AQM TF", String.valueOf(connectFailed) + "CNCT");
-			Log.d("AQM TF", String.valueOf(measurementTimeout) + "TMOUT");
 			runningApp.setIsMeasuring(false);
 		}
 	}
@@ -351,5 +357,11 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 		if (runningApp != null) {
 			runningApp.animateFace();
 		}
+	}
+	
+	public PendingIntent emptyIntent() {
+		PendingIntent empty;
+		empty = PendingIntent.getActivity(context, 0, new Intent(), Intent.FLAG_ACTIVITY_NEW_TASK);
+		return empty;
 	}
 }

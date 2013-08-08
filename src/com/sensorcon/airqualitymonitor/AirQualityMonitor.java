@@ -79,7 +79,6 @@ public class AirQualityMonitor extends Activity {
 	boolean isMeasuring;
 	
 	public void setIsMeasuring(boolean status) {
-		Log.d("AQM TF", String.valueOf(status) + "SET");
 		this.isMeasuring = status;
 	}
 	
@@ -112,7 +111,6 @@ public class AirQualityMonitor extends Activity {
 						// Don't allow multiple measurements at once
 						// here only. Too easy for people to click the face
 						// too man times.
-						Log.d("AQM TF", String.valueOf(isMeasuring));
 						if (!isMeasuring) {
 							takeMeasurement();
 						}
@@ -277,7 +275,6 @@ public class AirQualityMonitor extends Activity {
 		
 		float pValue = dbData.get(lastItem).getDbPressure().getValue();
 		int pPref = myPreferences.getInt(Constants.PRESSURE_UNIT, Constants.PASCAL);
-		Log.d("AQM", "Looked up Pressure:" + String.valueOf(pPref));
 		if (pPref == Constants.HECTOPASCAL) {
 			tsPressure.setText(String.format("%.2f", pValue/100) + " hPa");
 		} else if (pPref == Constants.KILOPASCAL) {
@@ -359,13 +356,6 @@ public class AirQualityMonitor extends Activity {
 		case R.id.mainHelp:
 			TxtReader help = new TxtReader(myContext);
 			help.displayTxtAlert("About", R.raw.main_help);
-			// Load in some data
-//			dbHandler.open();
-//			for (int i=0; i < 100; i++) {
-//				dbHandler.loadDummyData();
-//				Log.d("AQM", "Loading dummy " + String.valueOf(i));
-//			}
-//			dbHandler.close();
 			break;
 		case R.id.aqInfo:
 			showAQInfo();
