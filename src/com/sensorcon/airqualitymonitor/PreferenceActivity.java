@@ -11,10 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.net.rtp.RtpStream;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -220,7 +218,7 @@ public class PreferenceActivity extends Activity{
 				stopService(aqmService);
 				startService(aqmService);
 				tvServiceStatus.setText(Constants.SERVICE_ON);
-				Toast.makeText(myContext, "Monitoring service has been restarted with the selected interval", Toast.LENGTH_LONG).show();
+				Toast.makeText(myContext, "Monitoring service has been started", Toast.LENGTH_LONG).show();
 			}
 		});
 		r5 = (RadioButton)findViewById(R.id.radioI5);
@@ -234,7 +232,7 @@ public class PreferenceActivity extends Activity{
 				stopService(aqmService);
 				startService(aqmService);
 				tvServiceStatus.setText(Constants.SERVICE_ON);
-				Toast.makeText(myContext, "Monitoring service has been restarted with the selected interval", Toast.LENGTH_LONG).show();
+				Toast.makeText(myContext, "Monitoring service has been started", Toast.LENGTH_LONG).show();
 			}
 		});
 		r15 = (RadioButton)findViewById(R.id.radioI15);
@@ -248,7 +246,7 @@ public class PreferenceActivity extends Activity{
 				stopService(aqmService);
 				startService(aqmService);
 				tvServiceStatus.setText(Constants.SERVICE_ON);
-				Toast.makeText(myContext, "Monitoring service has been restarted with the selected interval", Toast.LENGTH_LONG).show();
+				Toast.makeText(myContext, "Monitoring service has been started", Toast.LENGTH_LONG).show();
 			}
 		});
 		r30 = (RadioButton)findViewById(R.id.radioI30);
@@ -262,7 +260,7 @@ public class PreferenceActivity extends Activity{
 				stopService(aqmService);
 				startService(aqmService);
 				tvServiceStatus.setText(Constants.SERVICE_ON);
-				Toast.makeText(myContext, "Monitoring service has been restarted with the selected interval", Toast.LENGTH_LONG).show();
+				Toast.makeText(myContext, "Monitoring service has been started", Toast.LENGTH_LONG).show();
 			}
 		});
 		r60 = (RadioButton)findViewById(R.id.radioI60);
@@ -276,7 +274,7 @@ public class PreferenceActivity extends Activity{
 				stopService(aqmService);
 				startService(aqmService);
 				tvServiceStatus.setText(Constants.SERVICE_ON);
-				Toast.makeText(myContext, "Monitoring service has been restarted with the selected interval", Toast.LENGTH_LONG).show();
+				Toast.makeText(myContext, "Monitoring service has been started", Toast.LENGTH_LONG).show();
 			}
 		});
 		
@@ -337,23 +335,6 @@ public class PreferenceActivity extends Activity{
 
 	}
 	
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-	}
-	
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-	}
-	
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -363,14 +344,6 @@ public class PreferenceActivity extends Activity{
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch(item.getItemId()) {
-//		case R.id.srvStart:
-//			startService(aqmService);
-//			tvServiceStatus.setText(Constants.SERVICE_ON);
-//			break;
-//		case R.id.srvStop:
-//			stopService(aqmService);
-//			tvServiceStatus.setText(Constants.SERVICE_OFF);
-//			break;
 		case R.id.stupDrn:
 			setupDrone(false);
 			break;
