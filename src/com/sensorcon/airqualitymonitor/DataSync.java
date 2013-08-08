@@ -160,8 +160,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						//
 					}
 
 					myDrone.measurePressure();
@@ -189,8 +188,7 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						//
 					}
 					myDrone.measurePrecisionGas();
 				}

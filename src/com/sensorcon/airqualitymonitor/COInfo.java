@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.renderscript.Type;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.util.Linkify;

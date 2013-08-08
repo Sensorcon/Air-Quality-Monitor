@@ -1,11 +1,9 @@
 package com.sensorcon.airqualitymonitor.database;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 import com.sensorcon.airqualitymonitor.HistoryActivity;
 
@@ -19,7 +17,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.util.Log;
 
 public class DBDataHandler {
 	

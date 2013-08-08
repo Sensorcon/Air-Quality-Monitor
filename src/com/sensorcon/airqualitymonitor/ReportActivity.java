@@ -4,10 +4,8 @@ package com.sensorcon.airqualitymonitor;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 

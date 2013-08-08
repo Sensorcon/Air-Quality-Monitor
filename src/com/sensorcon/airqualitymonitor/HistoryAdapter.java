@@ -1,18 +1,11 @@
 package com.sensorcon.airqualitymonitor;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 import com.sensorcon.airqualitymonitor.database.DBCO;
 import com.sensorcon.airqualitymonitor.database.DBCO2;
 import com.sensorcon.airqualitymonitor.database.DBDataBlob;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
