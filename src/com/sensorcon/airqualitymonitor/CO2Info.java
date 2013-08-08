@@ -88,7 +88,8 @@ public class CO2Info extends Activity{
 		addTextRow("More Information:", Typeface.BOLD_ITALIC);
 		addLinkRow("https://en.wikipedia.org/wiki/Carbon_dioxide_in_Earth's_atmosphere", Typeface.NORMAL);
 		addLinkRow("https://en.wikipedia.org/wiki/Indoor_air_quality#Carbon_dioxide", Typeface.NORMAL);
-		
+		addTextRow("The CO2 Module for the Sensordrone can be purchased at our site:", Typeface.NORMAL);
+		addLinkRow("http://www.sensorcon.com/ambient-co2-sensor-carbon-dioxide-sensor-module-for-sensordrone/", Typeface.NORMAL);
 		
 
 

@@ -87,8 +87,6 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 			return null;
 		}
 
-		Looper.prepare(); // This needs to be called for older devices
-		myDrone = new Drone();
 
 		notifier = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 				 
@@ -348,6 +346,8 @@ public class DataSync extends AsyncTask<Void, Void, Void> {
 		if (runningApp != null) {
 			runningApp.setIsMeasuring(true);
 		}
+		// myDrone needs to be set up in a UI thread, or else you'll need to manager Looper in the doInBackground
+		myDrone = new Drone();
 	}
 	
 	@Override
